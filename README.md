@@ -10,9 +10,6 @@ Ken Deng, UNI: kd3005 (kd3005@columbia.edu)
 ## List of Files
 ```
 ise.py  
-spanbert.py  
-spacy_help_functions.py  
-example_relations.py  
 requirements.txt  
 README.md
 ```
@@ -61,7 +58,7 @@ python ise.py ABC123XYZ abc456def GEMINIKEY -gemini 2 0.0 "bill gates microsoft"
 
 ## Engine ID and API Key
 
-To be updated upon final submission.
+will update when submitting
 
 ---
 
