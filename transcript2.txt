@@ -1,0 +1,16 @@
+# transcript generated for -gemini 2 0.0 "bill gates microsoft" 10
+
+Querying: bill gates microsoft
+Extracted from https://en.wikipedia.org/wiki/Bill_Gates: [('Paul Allen', 'Microsoft', 1.0), ('Bill Gates', 'Gates Foundation', 1.0), ('Bill Gates', 'Cascade Investment', 1.0), ('Bill Gates', 'Branded Entertainment Network', 1.0), ('Bill Gates', 'TerraPower', 1.0), ('Bill Gates', 'Gates Ventures', 1.0), ('Bill Gates', 'Microsoft', 1.0), ('William Henry Gates III', 'American', 1.0), ('Paul Allen', 'Microsoft', 1.0), ('He', 'Microsoft', 1.0), ('Allen', 'Microsoft', 1.0), ('he', 'Microsoft', 1.0), ('he', 'Bill & Melinda Gates Foundation', 1.0), ('Gates', 'BEN', 1.0), ('Gates', 'Cascade Investment', 1.0), ('Gates', 'TerraPower', 1.0), ('Gates', 'Gates Ventures', 1.0), ('Gates', 'Breakthrough Energy', 1.0), ('Warren Buffett', 'Giving Pledge', 1.0)]
+
+==================== Extracted Tuples ====================
+Subject: Paul Allen, Object: Microsoft, Confidence: 1.00
+Subject: Bill Gates, Object: Gates Foundation, Confidence: 1.00
+Subject: Bill Gates, Object: Cascade Investment, Confidence: 1.00
+Subject: Bill Gates, Object: Branded Entertainment Network, Confidence: 1.00
+Subject: Bill Gates, Object: TerraPower, Confidence: 1.00
+Subject: Bill Gates, Object: Gates Ventures, Confidence: 1.00
+Subject: Bill Gates, Object: Microsoft, Confidence: 1.00
+Subject: William Henry Gates III, Object: American, Confidence: 1.00
+Subject: He, Object: Microsoft, Confidence: 1.00
+Subject: Allen, Object: Microsoft, Confidence: 1.00
