@@ -1,0 +1,16 @@
+# transcript generated for -spanbert 2 0.7 "bill gates microsoft" 10
+
+Querying: bill gates microsoft
+Extracted from https://en.wikipedia.org/wiki/Bill_Gates: [('Melinda', 'TerraPower', np.float32(0.86020887)), ('Melinda', 'Breakthrough Energy', np.float32(0.9805891)), ('\u200b', 'Breakthrough Energy', np.float32(0.9338053)), ('Melinda', 'Gates Ventures Technology', np.float32(0.99539196)), ('\u200b', 'Gates Ventures Technology', np.float32(0.99342716)), ('Gates', 'BEN , Cascade Investment', np.float32(0.9917772)), ('Gates', 'TerraPower ,', np.float32(0.98270506)), ('Gates', 'Gates Ventures', np.float32(0.9920854)), ('Gates', 'Breakthrough Energy', np.float32(0.991435)), ('Warren Buffett', 'the Giving Pledge', np.float32(0.97438645))]
+
+==================== Extracted Tuples ====================
+Subject: Melinda, Object: Gates Ventures Technology, Confidence: 1.00
+Subject: ​, Object: Gates Ventures Technology, Confidence: 0.99
+Subject: Gates, Object: Gates Ventures, Confidence: 0.99
+Subject: Gates, Object: BEN , Cascade Investment, Confidence: 0.99
+Subject: Gates, Object: Breakthrough Energy, Confidence: 0.99
+Subject: Gates, Object: TerraPower ,, Confidence: 0.98
+Subject: Melinda, Object: Breakthrough Energy, Confidence: 0.98
+Subject: Warren Buffett, Object: the Giving Pledge, Confidence: 0.97
+Subject: ​, Object: Breakthrough Energy, Confidence: 0.93
+Subject: Melinda, Object: TerraPower, Confidence: 0.86
