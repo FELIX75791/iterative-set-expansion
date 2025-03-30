@@ -11,7 +11,9 @@ Ken Deng, UNI: kd3005 (kd3005@columbia.edu)
 ```
 ise.py  
 requirements.txt  
-README.md
+README.me
+transcript1.txt
+transcript2.txt
 ```
 
 ---
@@ -22,9 +24,9 @@ Follow the insturctions on the course website. Place the ise.py in the SpanBERT 
 
 ### Example Usage
 ```
-python ise.py <Search API> <Search Engine ID> <Gemini API> -- -spanbert 2 0.8 "bill gates microsoft" 50
+python ise.py <Search API> <Search Engine ID> <Gemini API> -- -spanbert 2 0.7 "bill gates microsoft" 10
 
-python ise.py <Search API> <Search Engine ID> <Gemini API> -- -gemini 2 0.8 "bill gates microsoft" 50
+python ise.py <Search API> <Search Engine ID> <Gemini API> -- -gemini 2 0.0 "bill gates microsoft" 10
 ```
 
 ---
@@ -251,13 +253,6 @@ Subject: Satya Nadella, Object: Microsoft, Confidence: 0.98
 ...
 ```
 
----
-
-## Submission Notes
-
-You should submit the following:
-- `proj2.tar.gz`: source code
-- `README.md`: this file
 - Transcript 1: Output for `-spanbert 2 0.7 "bill gates microsoft" 10`
 - Transcript 2: Output for `-gemini 2 0.0 "bill gates microsoft" 10`
 
