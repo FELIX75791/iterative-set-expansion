@@ -39,6 +39,7 @@ import spacy
 import time
 from googleapiclient.discovery import build
 import google.generativeai as genai
+import re
 
 # Try to import SpanBERT if using -spanbert
 try:
@@ -85,6 +86,9 @@ def is_likely_html(url):
             return False
     return True
 
+def clean_text(text):
+    """Remove zero-width spaces and other non-visible characters."""
+    return re.sub(r'[\u200b\u200c\u200d\uFEFF]', '', text)
 
 def fetch_full_text(url):
     """Fetch full text from URL by retrieving HTML and extracting text via BeautifulSoup."""
@@ -105,6 +109,7 @@ def fetch_full_text(url):
         # Extract text from paragraphs, divs, etc.
         texts = soup.stripped_strings
         full_text = " ".join(texts)
+        full_text = clean_text(full_text)
         return full_text
     except Exception as e:
         print(f"Error fetching {url}: {e}")
@@ -188,6 +193,9 @@ def create_entity_pairs(sents_doc, entities_of_interest, window_size=40):
                 entity_pairs.append({"tokens": tokens, "subj": e2_info, "obj": e1_info})
     return entity_pairs
 
+def is_valid_string(s):
+    """Return True if s is a valid non-empty string (after stripping) and does not start with a zero-width space."""
+    return bool(s.strip()) and not s.startswith('\u200b')
 
 # Extraction using SpanBERT
 def extract_relations_spanbert(text, nlp, spanbert, relation_spec, threshold):
@@ -217,8 +225,11 @@ def extract_relations_spanbert(text, nlp, spanbert, relation_spec, threshold):
             continue
         predictions = spanbert.predict(filtered_pairs)
         for pair, (rel, conf) in zip(filtered_pairs, predictions):
+            subj_text = pair["subj"][0]
+            obj_text = pair["obj"][0]
             if rel == relation_spec["name"] and conf >= threshold:
-                results.append((pair["subj"][0], pair["obj"][0], conf))
+                if is_valid_string(subj_text) and is_valid_string(obj_text):
+                    results.append((subj_text, obj_text, conf))
     return results
 
 
@@ -267,6 +278,7 @@ def extract_relations_from_sentence_gemini(sentence, relation_spec):
                 parts = line.split("Subject:")[1].split("Object:")
                 subj = parts[0].strip().rstrip(",")
                 obj = parts[1].strip()
+                # For Gemini, we assume valid output so no additional filtering here.
                 results.append((subj, obj, 1.0))
             except Exception:
                 continue
@@ -312,6 +324,9 @@ def remove_duplicates(tuples_list, use_confidence=True):
             unique[key] = tup
     return list(unique.values())
 
+def is_valid_tuple(tup):
+    subj, obj, _ = tup
+    return is_valid_string(subj) and is_valid_string(obj)
 
 # Main iterative procedure
 def main():
@@ -414,6 +429,8 @@ def main():
         X.sort(key=lambda x: x[2], reverse=True)
     if len(X) > k:
         X = X[:k]
+    # Filter out any invalid tuples before printing.
+    X = list(filter(is_valid_tuple, X))
     print("\n==================== Extracted Tuples ====================")
     for tup in X:
         print(f"Subject: {tup[0]}, Object: {tup[1]}, Confidence: {tup[2]:.2f}")
